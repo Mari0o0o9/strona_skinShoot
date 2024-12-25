@@ -9,6 +9,9 @@ body {
     color: white;
 }
 #center {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     background-color: rgb(32, 34, 34);
     min-height: 84vh;
     max-height: fit-content;
@@ -97,7 +100,7 @@ header {
     border-radius: 10px;
     padding: 5px;
     box-shadow: 0px 9px 15px 0px rgba(0, 0, 0, 1);
-    overflow: auto;
+    overflow: hidden;
     color: white;
 }
 .weaponsMenu.activeWeapons li {
@@ -110,6 +113,24 @@ header {
 }
 .weaponsMenu.activeWeapons li:hover {
     border-bottom: rgb(141, 143, 141) 2px solid;
+}
+.box-item {
+    display: flex;
+    width: 20%;
+    height: 30%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-transform: uppercase;
+    margin: 1%;
+    padding: 1%;
+    background-color: rgb(51, 53, 53);
+    box-shadow: 0px 9px 15px 0px rgba(0, 0, 0, 1);
+    border-radius: 10px;
+}
+.box-item img {
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -152,10 +173,9 @@ header {
         left: 75%;
         width: 49%;
         max-height: 347px;
-        min-height: fit-content;
         border-radius: 10px;
         padding-bottom: 5px;
-        overflow: auto;
+        overflow: hidden;
     }
     .weaponsMenu.activeWeapons li img {
         display: none;

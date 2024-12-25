@@ -75,6 +75,11 @@ var scroll = document.querySelectorAll(".weaponsMenu");
 scroll.forEach(menu => {
     menu.addEventListener("wheel", (event) => { 
         event.preventDefault();
-        menu.scrollLeft += event.deltaY;
+        if (menuItems.classList.contains("active")) {
+            menu.scrollTop += event.deltaY;
+        } else {
+            menu.scrollLeft += event.deltaY;
+        }
     });
 });
+
