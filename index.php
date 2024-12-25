@@ -184,8 +184,8 @@
                     if($result -> num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
                             echo "<div class='box-item'>
-                                    <img src='./item_img/{$category}/{$row['skin_name']}.png' alt='{$row['skin_name']}'>
                                     <p>{$row['skin_name']}</p>
+                                    <img src='./item_img/{$category}/{$row['skin_name']}.png' alt='{$row['skin_name']}'>
                                 </div>";   
                         }
                     } else {
