@@ -11,7 +11,7 @@ body {
 #center {
     background-color: rgb(32, 34, 34);
     min-height: 84vh;
-    max-width: fit-content;
+    max-height: fit-content;
     padding-top: 16vh;
 }
 header {
