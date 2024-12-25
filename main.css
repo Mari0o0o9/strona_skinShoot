@@ -115,9 +115,10 @@ header {
     border-bottom: rgb(141, 143, 141) 2px solid;
 }
 .box-item {
+    position: relative;
     display: flex;
-    width: 20%;
-    height: 30%;
+    width: 15%;
+    height: 25%;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -127,6 +128,12 @@ header {
     background-color: rgb(51, 53, 53);
     box-shadow: 0px 9px 15px 0px rgba(0, 0, 0, 1);
     border-radius: 10px;
+    animation: itemBoxHoverDown forwards 0.3s;
+}
+.box-item:hover {
+    background-color: rgb(32, 34, 34);
+    animation: itemBoxHoverUp forwards 0.3s;
+    cursor: pointer;
 }
 .box-item img {
     width: 100%;
@@ -179,5 +186,25 @@ header {
     }
     .weaponsMenu.activeWeapons li img {
         display: none;
+    }
+}
+
+
+/* animation */
+
+@keyframes itemBoxHoverUp {
+    from {
+        bottom: 0px;
+    }
+    to {
+        bottom: 15px;
+    }
+}
+@keyframes itemBoxHoverDown {
+    from {
+        bottom: 15px;
+    }
+    to {
+        bottom: 0px;
     }
 }
