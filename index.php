@@ -20,13 +20,13 @@
 <body>
     <header>
         <section class="logo">
-            <a href="./index.html">
+            <a href="./index.php">
                 <img src="./image/logo.png" alt="SkinShoot">
             </a>
         </section>
         <section class="search">
             <label for="searchBox" class="material-symbols-outlined">search</label>
-            <input id="searchBox" type="text" placeholder="Search...">
+            <input id="searchBox" type="text" placeholder="Search..." onkeyup="SearchItem(this.value)">
         </section>
         <section class="menu" id="menu">
             <div class="weapons">Pistols</div>
@@ -145,9 +145,24 @@
                         console.error("Błąd: " + this.status + " - " + this.statusText);
                     }
                 };
-                xhttp.open("POST", "server.php", true);
+                xhttp.open("POST", "item.php", true);
                 xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhttp.send("category=" + encodeURIComponent(category.toLowerCase()));
+            }
+
+            function SearchItem() {
+                var searchBox = document.getElementById('searchBox').value;
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById('center').innerHTML = this.responseText;
+                    } else {
+                        console.error("Błąd: " + this.status + " - " + this.statusText);
+                    }
+                };
+                xhttp.open("POST", "search.php", true);
+                xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhttp.send("search=" + encodeURIComponent(searchBox.toLowerCase()));
             }
         </script>
     </section>
