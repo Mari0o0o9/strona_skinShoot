@@ -148,6 +148,7 @@
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                         document.getElementById('center').innerHTML = this.responseText;
+                        clearUrlParams();
                     } else {
                         console.error("Błąd: " + this.status + " - " + this.statusText);
                     }
@@ -163,6 +164,7 @@
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                         document.getElementById('center').innerHTML = this.responseText;
+                        clearUrlParams();
                     } else {
                         console.error("Błąd: " + this.status + " - " + this.statusText);
                     }
@@ -170,6 +172,12 @@
                 xhttp.open("POST", "search.php", true);
                 xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhttp.send("search=" + encodeURIComponent(searchBox.toLowerCase()));
+            }
+
+            function clearUrlParams() {
+                var url = new URL(window.location);
+                url.search = '';
+                window.history.pushState({}, '', url);
             }
         </script>
         <?php
@@ -194,7 +202,6 @@
                 } else {
                     echo "ERROR: Could not able to execute $sql. " . $conn -> error;
                 }
-
             }
         ?>
     </section>

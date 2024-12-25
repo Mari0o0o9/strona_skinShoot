@@ -11,9 +11,8 @@
         if ($result = $conn -> query($sql)) {
             if($result -> num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                    echo "<div class='box-item'>
-                            <p>{$row['skin_name']}</p>
-                            <img src='./item_img/{$category}/{$row['skin_name']}.png' alt='{$row['skin_name']}'>
+                    echo "<div class='search-box'>
+                            
                         </div>";   
                 }
             } else {
