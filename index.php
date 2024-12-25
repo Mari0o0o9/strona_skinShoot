@@ -1,3 +1,10 @@
+<?php
+    $conn = new mysqli("localhost", "root", "","csgo");
+    if ($conn -> connect_error) {
+        die("Connection failed: " . $conn -> connect_error);
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -165,6 +172,31 @@
                 xhttp.send("search=" + encodeURIComponent(searchBox.toLowerCase()));
             }
         </script>
+        <?php
+            if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['category']) && isset($_GET['item'])) {
+                $category = $conn -> real_escape_string($_GET['category']);
+                $item = $conn -> real_escape_string($_GET['item']);
+                $sql = "SELECT *
+                        FROM `$category`
+                        WHERE skin_name = '$item'";
+
+                if ($result = $conn -> query($sql)) {
+                    if($result -> num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            echo "<div class='box-item'>
+                                    <img src='./item_img/{$category}/{$row['skin_name']}.png' alt='{$row['skin_name']}'>
+                                    <p>{$row['skin_name']}</p>
+                                </div>";   
+                        }
+                    } else {
+                        echo "0 results";
+                    }
+                } else {
+                    echo "ERROR: Could not able to execute $sql. " . $conn -> error;
+                }
+
+            }
+        ?>
     </section>
     <footer>
 

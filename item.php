@@ -11,10 +11,10 @@
         if ($result = $conn -> query($sql)) {
             if($result -> num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                    echo "<div class='box-item'>
+                    echo "<a href='index.php?category={$_POST['category']}&item={$row['skin_name']}' class='box-item'>
                             <p>{$row['skin_name']}</p>
                             <img src='./item_img/{$_POST['category']}/{$row['skin_name']}.png' alt='{$row['skin_name']}'>
-                        </div>";   
+                        </a>";   
                 }
             } else {
                 echo "0 results";
