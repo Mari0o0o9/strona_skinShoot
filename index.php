@@ -143,6 +143,7 @@
                 })
             });
 
+            // Show weapons by category
             function showWeaponsByCategory(category) {
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
@@ -158,6 +159,7 @@
                 xhttp.send("category=" + encodeURIComponent(category.toLowerCase()));
             }
 
+            // Search
             function SearchItem() {
                 var searchBox = document.getElementById('searchBox').value;
                 var xhttp = new XMLHttpRequest();
