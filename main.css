@@ -84,6 +84,13 @@ header {
     cursor: pointer;
     color: black;
 }
+.search-box {
+			position: fixed;
+			display: flex;
+			background-color: red;
+			color: white;
+			padding: 7px;
+}
 .weaponsMenu {
     display: none; 
 }
