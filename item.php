@@ -10,11 +10,13 @@
                 weapons.skin_name, 
                 collection.collection_name,  
                 cases.case_name
-                FROM weapons
+                FROM 
+                    weapons
                 JOIN collection 
                     ON weapons.item = collection.item AND weapons.skin_name = collection.skin_name
                 JOIN cases 
-                    ON weapons.item = cases.item AND weapons.skin_name = cases.skin_name";
+                    ON weapons.item = cases.item AND weapons.skin_name = cases.skin_name
+                WHERE weapons.item = '$item'";
 
         if ($result = $conn -> query($sql)) {
             if($result -> num_rows > 0) {
