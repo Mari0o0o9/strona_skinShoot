@@ -144,7 +144,7 @@
             });
 
             // Show weapons by category
-            function showWeaponsByCategory(category) {
+            function showWeaponsByCategory(item) {
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
@@ -156,7 +156,7 @@
                 };
                 xhttp.open("POST", "item.php", true);
                 xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhttp.send("category=" + encodeURIComponent(category.toLowerCase()));
+                xhttp.send("item=" + encodeURIComponent(item.toLowerCase()));
             }
 
             // Search
@@ -183,19 +183,20 @@
             }
         </script>
         <?php
-            if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['category']) && isset($_GET['item'])) {
-                $category = $conn -> real_escape_string($_GET['category']);
+            if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['item']) && isset($_GET['skin_name'])) {
                 $item = $conn -> real_escape_string($_GET['item']);
-                $sql = "SELECT *
-                        FROM `$category`
-                        WHERE skin_name = '$item'";
+                $skin_name = $conn -> real_escape_string($_GET['skin_name']);
+                $sql = "SELECT * 
+                        FROM `weapons` 
+                        WHERE item = '$item' 
+                        AND skin_name = '$skin_name'";
 
                 if ($result = $conn -> query($sql)) {
                     if($result -> num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
                             echo "<div class='box-item'>
                                     <p>{$row['skin_name']}</p>
-                                    <img src='./item_img/{$category}/{$row['skin_name']}.png' alt='{$row['skin_name']}'>
+                                    <img src='./item_img/{$item}/{$row['skin_name']}.png' alt='{$row['skin_name']}'>
                                 </div>";   
                         }
                     } else {
