@@ -23,9 +23,8 @@
                 while($row = $result->fetch_assoc()) {
                     echo "<a href='index.php?item={$_POST['item']}&skin_name={$row['skin_name']}' class='box-item'>
                             <p>{$row['skin_name']}</p>
-                            <img src='./item_img/{$_POST['item']}/{$row['skin_name']}.png' alt='{$row['skin_name']}'>
-                            <p>Collection: {$row['collection_name']}</p>
-                            <p>Case: {$row['case_name']}</p>
+                            <img src='./item_img/{$_POST['item']}/{$row['skin_name']}.png' alt='{$row['skin_name']}' class='item-img'>
+                            <p><img src='./item_img/case/{$row['case_name']}.png' alt='{$row['case_name']}' class='item-img-case'> {$row['case_name']}</p>
                         </a>";   
                 }
             } else {

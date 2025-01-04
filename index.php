@@ -196,7 +196,7 @@
                         while($row = $result->fetch_assoc()) {
                             echo "<div class='box-item'>
                                     <p>{$row['skin_name']}</p>
-                                    <img src='./item_img/{$item}/{$row['skin_name']}.png' alt='{$row['skin_name']}'>
+                                    <img src='./item_img/{$item}/{$row['skin_name']}.png' alt='{$row['skin_name']}' class='item-img'>
                                 </div>";   
                         }
                     } else {
