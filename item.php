@@ -9,7 +9,7 @@
                 weapons.item, 
                 weapons.skin_name, 
                 collection.collection_name,  
-                cases.case_name
+                cases.case_name,
                 containers.container_name
                 FROM 
                     weapons
@@ -17,7 +17,7 @@
                     ON weapons.item = collection.item AND weapons.skin_name = collection.skin_name
                 JOIN cases 
                     ON weapons.item = cases.item AND weapons.skin_name = cases.skin_name
-                JOIN containers
+                LEFT JOIN containers
                     ON weapons.item = containers.item AND weapons.skin_name = containers.skin_name
                 WHERE weapons.item = '$item'";
 
