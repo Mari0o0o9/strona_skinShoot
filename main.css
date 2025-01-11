@@ -3,16 +3,16 @@
     margin: 0;
 }
 body {
-    font-family: "Mukta", sans-serif;
+    font-family: "Roboto", sans-serif; 
     font-weight: 700;
     font-style: normal;
-    color: white;
+    color: #e0e0e0; 
 }
 #center {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: rgb(32, 34, 34);
+    background-color: #1c1c1c; 
     min-height: 84vh;
     max-height: fit-content;
     padding-top: 16vh;
@@ -25,7 +25,7 @@ header {
     justify-content: space-between;
     height: 15vh;
     width: 100%;
-    background-color: rgb(32, 34, 34);
+    background-color: #2c2c2c; 
     box-shadow: 0px 9px 15px 0px rgba(0, 0, 0, 1);
 }
 .logo {
@@ -44,6 +44,7 @@ header {
     font-size: 40px;
     margin-right: 20px;
     cursor: pointer;
+    color: #b0b0b0; 
 }
 .menu {
     display: flex;
@@ -59,15 +60,16 @@ header {
     cursor: pointer;
     border-bottom: solid 2px transparent;
     font-size: 1.1rem;
+    color: #e0e0e0; 
 }
 .weapons:hover {
-    border-bottom: solid 2px rgb(141, 143, 141);
+    border-bottom: solid 2px #b0b0b0; 
     transition: 0.3s;
 }
 .search {
     display: flex;
     text-align: center;
-    background-color: rgb(141, 143, 141);
+    background-color: #3c3c3c; 
     padding: 7px;
     border-radius: 5px;
     width: 20%;
@@ -79,17 +81,18 @@ header {
     width: 90%;
     margin-left: 5px;
     font-size: 1.1rem;
+    color: #e0e0e0; 
 }
 .search label {
     cursor: pointer;
-    color: black;
+    color: #e0e0e0; 
 }
 .search-box {
-			position: fixed;
-			display: flex;
-			background-color: red;
-			color: white;
-			padding: 7px;
+    position: fixed;
+    display: flex;
+    background-color: #3c3c3c; 
+    color: #e0e0e0; 
+    padding: 7px;
 }
 .weaponsMenu {
     display: none; 
@@ -102,13 +105,13 @@ header {
     transform: translateX(-50%);
     top: 15.5vh;
     width: 98%;
-    background-color: rgb(32, 34, 34);
+    background-color: #2c2c2c; 
     list-style: none;
     border-radius: 10px;
     padding: 5px;
     box-shadow: 0px 9px 15px 0px rgba(0, 0, 0, 1);
     overflow: hidden;
-    color: white;
+    color: #e0e0e0; 
 }
 .weaponsMenu.activeWeapons li {
     padding: 5px;
@@ -118,7 +121,7 @@ header {
     width: 80%;
 }
 .weaponsMenu.activeWeapons li:hover {
-    border-bottom: rgb(141, 143, 141) 2px solid;
+    border-bottom: #b0b0b0 2px solid; 
 }
 .box-item {
     position: relative;
@@ -128,12 +131,11 @@ header {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    text-transform: uppercase;
     text-decoration: none;
-    color: white;
+    color: #e0e0e0; 
     margin: 1%;
     padding: 1%;
-    background-color: rgb(51, 53, 53);
+    background-color: #3c3c3c; 
     box-shadow: 0px 9px 15px 0px rgba(0, 0, 0, 1);
     border-radius: 10px;
     animation: itemBoxHoverDown forwards 0.3s;
@@ -145,7 +147,7 @@ header {
     align-items: center;
 }
 .box-item:hover {
-    background-color: rgb(32, 34, 34);
+    background-color: #2c2c2c; 
     animation: itemBoxHoverUp forwards 0.3s;
     cursor: pointer;
 }
@@ -154,6 +156,34 @@ header {
     height: 100%;
 }
 .item-img-case {
+    width: 20%;
+    height: 20%;
+}
+#search-box {
+    top: 11vh;
+    z-index: 9999;
+    position: fixed;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: #3c3c3c; 
+    color: #e0e0e0; 
+    max-height: fit-content;
+}
+.search-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    text-decoration: none;
+    color: #e0e0e0; 
+}
+.search-item:hover {
+    background-color: #474747; 
+    border-radius: 10px;
+}
+.img-search-item {
     width: 20%;
     height: 20%;
 }
@@ -166,19 +196,19 @@ header {
     .menu-toggle {
         display: flex;
         transition: 0.3s;
-        color: rgb(141, 143, 141);
+        color: #b0b0b0; 
     }
     .menu.active {
         display: block;
         top: 15.5vh;
         position: fixed;
-        background-color: rgb(32, 34, 34);
+        background-color: #2c2c2c; 
         width: 49%;
         height: min-content;
         padding-bottom: 5px;
         border-radius: 10px;
         box-shadow: 0px 9px 15px 0px rgba(0, 0, 0, 1);
-        color: white;
+        color: #e0e0e0; 
     }
     .weapons {
         width: 80%;
@@ -204,6 +234,9 @@ header {
     }
     .weaponsMenu.activeWeapons li img {
         display: none;
+    }
+    #search-box {
+        width: 40%;
     }
 }
 
@@ -234,9 +267,9 @@ header {
     width: 10px;
 }
 ::-webkit-scrollbar-thumb {
-    background-color: rgb(141, 143, 141);
+    background-color: #b0b0b0; 
     border-radius: 10px;
 }
 ::-webkit-scrollbar-track {
-    background-color: rgb(32, 34, 34);
+    background-color: #2c2c2c; 
 }

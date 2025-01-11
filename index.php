@@ -34,6 +34,31 @@
         <section class="search">
             <label for="searchBox" class="material-symbols-outlined">search</label>
             <input id="searchBox" type="text" placeholder="Search..." onkeyup="SearchItem(this.value)">
+            <div id="search-box" style="display: none;">
+                <script>
+                // Search
+                function SearchItem() {
+                    var searchBox = document.getElementById('searchBox').value;
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            if (searchBox.trim() === "") {
+                                document.getElementById('search-box').style.display = 'none';
+                            } else {
+                                document.getElementById('search-box').style.display = 'block';
+                                document.getElementById('search-box').innerHTML = this.responseText;
+                            }
+                        } else {
+                            console.error("Błąd: " + this.status + " - " + this.statusText);
+                        }
+                    };
+                    xhttp.open("POST", "search.php", true);
+                    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    xhttp.send("search=" + encodeURIComponent(searchBox.toLowerCase()));
+                }
+
+                </script>
+            </div>
         </section>
         <section class="menu" id="menu">
             <div class="weapons">Pistols</div>
@@ -149,7 +174,6 @@
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                         document.getElementById('center').innerHTML = this.responseText;
-                        clearUrlParams();
                     } else {
                         console.error("Błąd: " + this.status + " - " + this.statusText);
                     }
@@ -159,28 +183,6 @@
                 xhttp.send("item=" + encodeURIComponent(item.toLowerCase()));
             }
 
-            // Search
-            function SearchItem() {
-                var searchBox = document.getElementById('searchBox').value;
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        document.getElementById('center').innerHTML = this.responseText;
-                        clearUrlParams();
-                    } else {
-                        console.error("Błąd: " + this.status + " - " + this.statusText);
-                    }
-                };
-                xhttp.open("POST", "search.php", true);
-                xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhttp.send("search=" + encodeURIComponent(searchBox.toLowerCase()));
-            }
-
-            function clearUrlParams() {
-                var url = new URL(window.location);
-                url.search = '';
-                window.history.pushState({}, '', url);
-            }
         </script>
         <?php
             if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['item']) && isset($_GET['skin_name'])) {
@@ -195,7 +197,7 @@
                     if($result -> num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
                             echo "<div class='box-item'>
-                                    <p>{$row['skin_name']}</p>
+                                    <p>".strtoupper($row['skin_name'])."</p>
                                     <img src='./item_img/{$item}/{$row['skin_name']}.png' alt='{$row['skin_name']}' class='item-img'>
                                 </div>";   
                         }
