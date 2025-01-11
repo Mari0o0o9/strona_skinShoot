@@ -174,6 +174,7 @@
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                         document.getElementById('center').innerHTML = this.responseText;
+                        removeQueryParameters();
                     } else {
                         console.error("Błąd: " + this.status + " - " + this.statusText);
                     }
@@ -183,6 +184,12 @@
                 xhttp.send("item=" + encodeURIComponent(item.toLowerCase()));
             }
 
+            // Function to remove URL query parameters
+            function removeQueryParameters() {
+                const url = new URL(window.location);
+                url.search = '';
+                window.history.replaceState({}, document.title, url);
+            }
         </script>
         <?php
             if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['item']) && isset($_GET['skin_name'])) {
@@ -197,7 +204,7 @@
                     if($result -> num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
                             echo "<div class='box-item'>
-                                    <p>".strtoupper($row['skin_name'])."</p>
+                                    <p>".ucfirst($row['skin_name'])."</p>
                                     <img src='./item_img/{$item}/{$row['skin_name']}.png' alt='{$row['skin_name']}' class='item-img'>
                                 </div>";   
                         }

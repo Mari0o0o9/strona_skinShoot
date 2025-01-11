@@ -25,7 +25,7 @@
             if($result -> num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     echo "<a href='index.php?item={$_POST['item']}&skin_name={$row['skin_name']}' class='box-item'>
-                            <p>" . strtoupper($row['skin_name']) . " </p>
+                            <p>" . ucwords($row['skin_name']) . " </p>
                             <img src='./item_img/{$_POST['item']}/{$row['skin_name']}.png' alt='{$row['skin_name']}' class='item-img'>";
                     if ($row['case_name'] == null) {
                         echo "<p><img src='./item_img/collection/" . ucwords($row['collection']) . ".png' alt='{$row['collection']}' class='item-img-case'> " . ucwords($row['collection']) . "</p>";

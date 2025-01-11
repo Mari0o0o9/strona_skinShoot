@@ -3,16 +3,16 @@
     margin: 0;
 }
 body {
-    font-family: "Roboto", sans-serif; 
+    font-family: "Mukta", sans-serif;
     font-weight: 700;
     font-style: normal;
-    color: #e0e0e0; 
+    color: #e0e0e0;
 }
 #center {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: #1c1c1c; 
+    background-color: #1c1c1c;
     min-height: 84vh;
     max-height: fit-content;
     padding-top: 16vh;
@@ -25,7 +25,7 @@ header {
     justify-content: space-between;
     height: 15vh;
     width: 100%;
-    background-color: #2c2c2c; 
+    background-color: #2c2c2c;
     box-shadow: 0px 9px 15px 0px rgba(0, 0, 0, 1);
 }
 .logo {
@@ -44,7 +44,7 @@ header {
     font-size: 40px;
     margin-right: 20px;
     cursor: pointer;
-    color: #b0b0b0; 
+    color: #b0b0b0;
 }
 .menu {
     display: flex;
@@ -60,16 +60,16 @@ header {
     cursor: pointer;
     border-bottom: solid 2px transparent;
     font-size: 1.1rem;
-    color: #e0e0e0; 
+    color: #e0e0e0;
 }
 .weapons:hover {
-    border-bottom: solid 2px #b0b0b0; 
+    border-bottom: solid 2px #b0b0b0;
     transition: 0.3s;
 }
 .search {
     display: flex;
     text-align: center;
-    background-color: #3c3c3c; 
+    background-color: #3c3c3c;
     padding: 7px;
     border-radius: 5px;
     width: 20%;
@@ -81,37 +81,45 @@ header {
     width: 90%;
     margin-left: 5px;
     font-size: 1.1rem;
-    color: #e0e0e0; 
+    color: #e0e0e0;
 }
 .search label {
     cursor: pointer;
-    color: #e0e0e0; 
+    color: #e0e0e0;
 }
 .search-box {
     position: fixed;
     display: flex;
-    background-color: #3c3c3c; 
-    color: #e0e0e0; 
+    background-color: #3c3c3c;
+    color: #e0e0e0;
     padding: 7px;
 }
 .weaponsMenu {
-    display: none; 
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 .weaponsMenu.activeWeapons {
     display: flex;
     position: fixed;
     justify-content: space-between;
-    left: 50%;
-    transform: translateX(-50%);
     top: 15.5vh;
     width: 98%;
-    background-color: #2c2c2c; 
+    background-color: #2c2c2c;
     list-style: none;
     border-radius: 10px;
     padding: 5px;
     box-shadow: 0px 9px 15px 0px rgba(0, 0, 0, 1);
     overflow: hidden;
-    color: #e0e0e0; 
+    color: #e0e0e0;
+    opacity: 1;
+    visibility: visible;
+    animation: weaponsMenuAppear 0.3s ease-in-out forwards;
+}
+.weaponsMenu.inactiveWeapons {
+    animation: weaponsMenuDisappear 0.3s ease-in-out forwards;
+    opacity: 0;
+    visibility: hidden;
 }
 .weaponsMenu.activeWeapons li {
     padding: 5px;
@@ -121,7 +129,7 @@ header {
     width: 80%;
 }
 .weaponsMenu.activeWeapons li:hover {
-    border-bottom: #b0b0b0 2px solid; 
+    border-bottom: #b0b0b0 2px solid;
 }
 .box-item {
     position: relative;
@@ -132,10 +140,10 @@ header {
     align-items: center;
     flex-direction: column;
     text-decoration: none;
-    color: #e0e0e0; 
+    color: #e0e0e0;
     margin: 1%;
     padding: 1%;
-    background-color: #3c3c3c; 
+    background-color: #3c3c3c;
     box-shadow: 0px 9px 15px 0px rgba(0, 0, 0, 1);
     border-radius: 10px;
     animation: itemBoxHoverDown forwards 0.3s;
@@ -147,9 +155,12 @@ header {
     align-items: center;
 }
 .box-item:hover {
-    background-color: #2c2c2c; 
+    background-color: #2c2c2c;
     animation: itemBoxHoverUp forwards 0.3s;
     cursor: pointer;
+}
+.item {
+    font-size: 1.1rem;
 }
 .item-img {
     width: 100%;
@@ -167,28 +178,30 @@ header {
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    background-color: #3c3c3c; 
-    color: #e0e0e0; 
+    background-color: #3c3c3c;
+    color: #e0e0e0;
     max-height: fit-content;
+    animation: searchBoxAppear 0.3s ease-in-out;
+}
+#search-box.hidden {
+    animation: searchBoxDisappear 0.3s ease-in-out;
 }
 .search-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px;
+    padding: 7px;
     text-decoration: none;
-    color: #e0e0e0; 
+    color: #e0e0e0;
 }
 .search-item:hover {
-    background-color: #474747; 
+    background-color: #474747;
     border-radius: 10px;
 }
 .img-search-item {
     width: 20%;
     height: 20%;
 }
-
-
 @media (max-width: 1153px) {
     .menu {
         display: none;
@@ -196,19 +209,27 @@ header {
     .menu-toggle {
         display: flex;
         transition: 0.3s;
-        color: #b0b0b0; 
+        color: #b0b0b0;
     }
     .menu.active {
         display: block;
         top: 15.5vh;
         position: fixed;
-        background-color: #2c2c2c; 
+        background-color: #2c2c2c;
         width: 49%;
         height: min-content;
         padding-bottom: 5px;
         border-radius: 10px;
         box-shadow: 0px 9px 15px 0px rgba(0, 0, 0, 1);
-        color: #e0e0e0; 
+        color: #e0e0e0;
+        opacity: 1;
+        visibility: visible;
+        animation: menuAppear 0.3s ease-in-out forwards;
+    }
+    .menu.inactive {
+        animation: menuDisappear 0.3s ease-in-out forwards;
+        opacity: 0;
+        visibility: hidden;
     }
     .weapons {
         width: 80%;
@@ -225,8 +246,10 @@ header {
         text-align: center;
         align-items: center;
         flex-direction: column;
-        left: 75%;
+        left: 50%;
+        transform: translateX(-50%);
         width: 49%;
+        top: 15.5vh;
         max-height: 347px;
         border-radius: 10px;
         padding-bottom: 5px;
@@ -239,10 +262,6 @@ header {
         width: 40%;
     }
 }
-
-
-/* animation */
-
 @keyframes itemBoxHoverUp {
     from {
         bottom: 0px;
@@ -259,17 +278,69 @@ header {
         bottom: 0px;
     }
 }
-
-
-/* scroll bar */
-
+@keyframes searchBoxAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes searchBoxDisappear {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+@keyframes weaponsMenuAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes weaponsMenuDisappear {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+@keyframes menuAppear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes menuDisappear {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
 ::-webkit-scrollbar {
     width: 10px;
 }
 ::-webkit-scrollbar-thumb {
-    background-color: #b0b0b0; 
+    background-color: #b0b0b0;
     border-radius: 10px;
 }
 ::-webkit-scrollbar-track {
-    background-color: #2c2c2c; 
+    background-color: #2c2c2c;
 }
